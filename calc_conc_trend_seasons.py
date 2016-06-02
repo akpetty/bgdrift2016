@@ -45,7 +45,7 @@ def calc_time_regres(var, num_years_req):
 			#print i, j
 			var_ma = var[:, i, j][~var[:, i, j].mask]
 			years_ma = years[~var[:, i, j].mask]
-			if len(var_ma>num_years_req):
+			if len(var_ma)>num_years_req:
 				trend[i, j], intercept, r[i, j], prob, stderr = stats.linregress(years_ma,var_ma)
 				sig[i, j] = 100*(1-prob)
 	trend = ma.array(trend,mask=np.isnan(trend))
